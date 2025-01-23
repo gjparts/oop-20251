@@ -16,9 +16,7 @@ public class App {
         //imprimir la direccion de memoria de per1
         System.out.println("Direccion de memoria de per1: "+per1);
         //imprimir lo que hay en los atributos de per1
-        System.out.println("nombre:"+per1.nombre);
-        System.out.println("edad:"+per1.edad);
-        System.out.println("genero:"+per1.genero);
+        per1.imprimir();
         
         //llenar los atributos de per1:
         per1.nombre = "Gerardo Portillo";
@@ -26,8 +24,17 @@ public class App {
         per1.genero = 'M';
         
         //volver a imprimir lo que hay en los atributos de per1
-        System.out.println("nombre:"+per1.nombre);
-        System.out.println("edad:"+per1.edad);
-        System.out.println("genero:"+per1.genero);
+        per1.imprimir();
+        
+        //crear otro objeto de clase Persona
+        Persona per2 = new Persona("Irene", 42, 'F');
+        //imprimir lo que hay en los atributos de per2
+        per2.imprimir();
+                
+        //crear objeto de clase Persona
+        Persona per3 = new Persona("Josue", 'M');
+        //imprimir lo que hay en los atributos de per3
+        per3.imprimir();
+        System.out.println("El genero de per3 es "+per3.getGeneroDescripcion());
     }
 }
