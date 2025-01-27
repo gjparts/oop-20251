@@ -62,4 +62,16 @@ public class Persona {
         if( this.genero == 'X' ) return "Otros";
         return "No configurado en el programa";
     }
+    //metodo que devuelve true o false dependiendo si es mayor de edad la Persona
+    public boolean esMayorDeEdad(){
+        //forma clasica
+        /*if (this.edad >= 18)
+            return true;
+        else
+            return false;*/
+        //usando operador ternario
+        //return ( this.edad >= 18 ? true : false );
+        //retornando de un solo el resultado de una condicion
+        return this.edad >= 18;
+    }
 }

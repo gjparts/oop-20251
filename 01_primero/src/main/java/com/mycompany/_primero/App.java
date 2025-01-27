@@ -36,5 +36,13 @@ public class App {
         //imprimir lo que hay en los atributos de per3
         per3.imprimir();
         System.out.println("El genero de per3 es "+per3.getGeneroDescripcion());
+        
+        System.out.println("per2 es mayor de edad? "+per2.esMayorDeEdad());
+        System.out.println("per3 es mayor de edad? "+per3.esMayorDeEdad());
+        
+        Carro car1 = new Carro("Toyota","Camry","Blanco",1988);
+        car1.imprimir();
+        
+
     }
 }
