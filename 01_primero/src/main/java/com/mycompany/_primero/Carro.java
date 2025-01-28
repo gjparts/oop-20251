@@ -32,6 +32,9 @@ public class Carro {
         this.anio = anio;
     }
     //metodos
+    /**
+     * Imprime el perfil del Carro
+     */
     public void imprimir(){
         System.out.println("********** Carro ********** ");
         System.out.println("Marca: "+this.marca);

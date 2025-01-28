@@ -43,6 +43,11 @@ public class App {
         Carro car1 = new Carro("Toyota","Camry","Blanco",1988);
         car1.imprimir();
         
-
+        Carro car2 = new Carro("Honda", "Civic", "Negro", 2004);
+        car2.imprimir();
+        
+        Empleado em1 = new Empleado("Filomeno Colinas",42,'M',23000.00f,'P');
+        em1.imprimir();
+        
     }
 }
