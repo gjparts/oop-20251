@@ -49,5 +49,12 @@ public class App {
         Empleado em1 = new Empleado("Filomeno Colinas",42,'M',23000.00f,'P');
         em1.imprimir();
         
+        Empleado em2 = new Empleado("Estevancito Maravilla", 70, 'M');
+        em2.setGenero('M');
+        em2.setSalario(35000);
+        em2.setContrato('T');
+        
+        em2.imprimir();
+        
     }
 }
