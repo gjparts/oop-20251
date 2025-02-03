@@ -9,7 +9,7 @@ public class CuentaAhorro {
     //atributos
     public String nombreCliente;
     public String numeroCuenta;
-    public float saldo;
+    private float saldo;
     //constructores
     /**
      * Construye un objeto de clase Cuenta de Ahorro
