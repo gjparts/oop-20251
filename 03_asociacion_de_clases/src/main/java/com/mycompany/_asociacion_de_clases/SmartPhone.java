@@ -64,7 +64,39 @@ public class SmartPhone {
     public Bateria getBateria() {
         return this.bateria;
     }
-    
+    public void imprimir(){
+        System.out.println("********** SmartPhone **********");
+        System.out.println("Fabricante: "+this.marca.nombre);
+        System.out.println("Modelo: "+this.modelo);
+        System.out.println("Almacenamiento: "+this.almacenamiento);
+        System.out.println("RAM: "+this.ram);
+        //Desde el constructor y el metodo set nos aseguramos que
+        //la bateria no sea null en estos casos no es necesario
+        //a la hora de consumir el objeto validar que sea nulo.
+        System.out.println("Bateria:");
+        System.out.println("\tMarca: "+this.bateria.getMarca().nombre);
+        System.out.println("\tMiliamperios: "+this.bateria.miliamperios);
+        //Ahora toca imprimir los chip de llamadas (simcard)
+        //la relacion entre SmartPhone y Chip es por agregacion
+        //por lo tanto es opcional, no esta obligando a llenarlos
+        //lo que puede ocurrir es que chip1 o chip2 puedan llegar
+        //a contener valor null, un objeto que apunta a null no se
+        //puede leer
+        if( this.chip1 != null ){
+            //si chip1 es distinto de null entonces lo imprimimos
+            System.out.println("Chip1: ");
+            System.out.println("\tNumero: "+this.chip1.numeroTelefonico);
+            System.out.println("\tOperador: " +this.chip1.getProveedor().nombre);
+        }
+        if( this.chip2 != null ){
+            //si chip2 es distinto de null entonces lo imprimimos
+            System.out.println("Chip2: ");
+            System.out.println("\tNumero: "+this.chip2.numeroTelefonico);
+            System.out.println("\tOperador: " +this.chip2.getProveedor().nombre);
+        }
+        //a la validacion anterior se le conoce como codigo null safety
+        //o sea a prueba de nulos.
+    }
     
     
 }
