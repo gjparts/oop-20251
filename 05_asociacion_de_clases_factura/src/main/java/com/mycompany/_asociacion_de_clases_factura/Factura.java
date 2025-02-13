@@ -1,6 +1,7 @@
 package com.mycompany._asociacion_de_clases_factura;
 import java.util.Calendar;
 import java.text.SimpleDateFormat;
+import java.text.DecimalFormat;
 public class Factura {
     //atributos
     public int numero;
@@ -58,6 +59,33 @@ public class Factura {
             System.out.println("Cliente: "+this.cliente.nombre);
             System.out.println("RTN: "+this.cliente.rtn);
         }
+        //suma de los productos de la factura, ignorarmos los que son
+        //null; excepto producto1 que ese siempre viene lleno
+        float subtotal = 0;
+        System.out.println("Producto\tPrecio");
+        System.out.println(this.producto1.nombre+"\t"+this.producto1.precioVenta);
+        subtotal += this.producto1.precioVenta;
+        //productos del 2 al 4 pueden llegar a estar null
+        if( this.producto2 != null ){
+            System.out.println(this.producto2.nombre+"\t"+this.producto2.precioVenta);
+            subtotal += this.producto2.precioVenta;
+        }
+        if( this.producto3 != null ){
+            System.out.println(this.producto3.nombre+"\t"+this.producto3.precioVenta);
+            subtotal += this.producto3.precioVenta;
+        }
+        if( this.producto4 != null ){
+            System.out.println(this.producto4.nombre+"\t"+this.producto4.precioVenta);
+            subtotal += this.producto4.precioVenta;
+        }
+        //resultados
+        DecimalFormat f = new DecimalFormat();
+        f.setMaximumFractionDigits(2);
+        f.setMinimumFractionDigits(2);
+        
+        System.out.println("Subtotal: "+f.format(subtotal) );
+        System.out.println("ISV 15%: "+f.format(subtotal*0.15) );
+        System.out.println("Total: "+f.format(subtotal*1.15) );
     }
 }
 
