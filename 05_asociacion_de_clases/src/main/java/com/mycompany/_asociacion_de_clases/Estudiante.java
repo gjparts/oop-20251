@@ -35,5 +35,33 @@ public class Estudiante {
     public Direccion getDireccion() {
         return this.direccion;
     }
-    
+    public void imprimir(){
+        System.out.println("****** Estudiante ******");
+        System.out.println("Cuenta: "+this.cuenta);
+        System.out.println("Nombre: "+this.nombre);
+        System.out.println("Carrera: "+this.carrera);
+        System.out.println("Edad: "+this.edad);
+        //como la direccion no puede ser null gracias al metodo set
+        //entonces no es necesario validarla
+        System.out.println("Direccion:");
+        System.out.println("\tCalle: "+this.direccion.calle);
+        System.out.println("\tAvenida: "+this.direccion.ave);
+        System.out.println("\tCasa: "+this.direccion.casa);
+        //en la Direccion el Barrio tampoco lo hemos permitido null
+        //por eso tampoco lo validamos
+        System.out.println("\tBarrio: "+this.direccion.getBarrio().nombre);
+        System.out.println("\tCiudad: "+this.direccion.getBarrio().ciudad);
+        System.out.println("\tMunicipio: "+this.direccion.getBarrio().municipio);
+        System.out.println("\tPais: "+this.direccion.getBarrio().pais);
+        //trabajo es un atributo publico y opcional de llenar
+        //por lo tanto puede venir null, asi que lo validamos
+        if( this.trabajo != null ){
+            System.out.println("Informacion Laboral:");
+            System.out.println("\tCargo: "+this.trabajo.descripcion);
+            System.out.println("\tEmpresa o Negocio: "+this.trabajo.getEmpresa().nombre);
+            System.out.println("\tJornada: "+this.trabajo.getJornadaDescripcion());
+            System.out.println("\tSalario: "+this.trabajo.getSalario());
+            System.out.println("\tCiudad: "+this.trabajo.getEmpresa().getDireccion().getBarrio().ciudad);
+        }
+    }
 }
