@@ -1,4 +1,6 @@
 package com.mycompany._asociacion_multiplicidad;
+
+import java.util.LinkedList; //importar lista vinculada
 public class Persona {
     //atributos
     public String identidad;
@@ -7,6 +9,10 @@ public class Persona {
     public Direccion direccion;
     public Empresa empresaLabora;
     public Mascota[] mascotas;
+    public LinkedList<Diploma> diplomas; //lista vinculada restringida solo a objetos Diploma
+    public Persona conyuge;
+    public LinkedList<Persona> hijos; //lista vinculada restringida solo a objetos Persona
+    
     //constructor
     public Persona(String identidad, String nombre, int telefono) {
         this.identidad = identidad;
@@ -50,6 +56,31 @@ public class Persona {
                 if( this.mascotas[i] != null ){
                     System.out.println("\t* Nombre: "+this.mascotas[i].nombre);
                     System.out.println("\t  Especie: "+this.mascotas[i].especie);
+                }
+            }
+        }
+        //coleccion de Diplomas (LinkedList)
+        if( this.diplomas != null ){
+            System.out.println("Diplomas:");
+            for (int i = 0; i < this.diplomas.size(); i++) {
+                //solo se imprime aquellos diplomas quw no sean null
+                if( this.diplomas.get(i) != null ){
+                    System.out.println("\t* Institucion: "+this.diplomas.get(i).institucion);
+                    System.out.println("\t  Curso: "+this.diplomas.get(i).nombre);
+                }
+            }
+        }
+        //datos del conyuge
+        if( this.conyuge != null ){
+            System.out.println("Nombre del Conyuge: "+this.conyuge.nombre);
+            System.out.println("Telefono del Conyuge: "+this.conyuge.telefono);
+        }
+        //coleccion de Hijos (LinkedList)
+        if( this.hijos != null ){
+            System.out.println("Hijos: ");
+            for (int i = 0; i < this.hijos.size(); i++) {
+                if( this.hijos.get(i) != null ){
+                    System.out.println("\t* "+this.hijos.get(i).nombre);
                 }
             }
         }
