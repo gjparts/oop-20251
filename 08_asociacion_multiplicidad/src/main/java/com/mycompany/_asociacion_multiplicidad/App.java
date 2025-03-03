@@ -23,7 +23,7 @@ public class App {
         per2.direccion = dir1;
         per2.mascotas = arr1;
         
-        Diploma dip1 = new Diploma("INFOP", "Torno y fresa");
+        Diploma dip1 = new Diploma("INFOP", "Torno y fresado");
         Diploma dip2 = new Diploma("INFOP", "Reparacion de maquina de coser");
         LinkedList diplomas1 = new LinkedList();
         diplomas1.push(dip1);
@@ -39,14 +39,14 @@ public class App {
         per1.direccion = dir1;
         per1.empresaLabora = em1;
         per1.mascotas = arr1;
-        per1.conyuge = per2;
+        per1.conyuge = per2; //el conyuge de per1 es per2
         per1.diplomas = diplomas1;
         per1.hijos = hijos1;
         per1.imprimir();
         
         //imprimir perfil de la per2
-        per2.hijos = per1.hijos; //tienen hijos en comun
-        per2.conyuge = per1;
+        per2.conyuge = per1; //el conyuge de per2 es per1
+        per2.hijos = per1.hijos; //tienen hijos en comun con per1
         per2.imprimir();
     }
 }
