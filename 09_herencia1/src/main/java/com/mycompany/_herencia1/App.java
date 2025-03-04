@@ -18,5 +18,17 @@ public class App {
         Empleado e2 = new Empleado("Pablo Marmol", 40, 'M', 20000, "Inspector de calidad");
         e2.saludar();
         e2.trabajar();
+        
+        Practicante pr1 = new Practicante("Pedro Paramo", 30, 6);
+        pr1.saludar();
+        pr1.trabajar();
+        System.out.println(pr1.salario);
+        System.out.println(pr1.meses);
+        
+        Catedratico cat1 = new Catedratico("Matematico", "Rene Descartes", 60, 'M',100000);
+        cat1.saludar();
+        cat1.trabajar();
+        cat1.educar();
+        
     }
 }
