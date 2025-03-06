@@ -1,6 +1,6 @@
 package com.mycompany._herencia2;
 public class Author {
-    //atributes
+    //attributes
     public String name;
     public String website;
     public String email;

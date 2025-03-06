@@ -2,7 +2,7 @@ package com.mycompany._herencia2;
 
 import java.util.Calendar;
 public class Media extends File {
-    //atributes
+    //attributes
     public Author author;
     public int duration;
     //constructor

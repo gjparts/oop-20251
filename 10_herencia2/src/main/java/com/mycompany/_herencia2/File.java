@@ -2,7 +2,7 @@ package com.mycompany._herencia2;
 import java.util.Calendar;
 import java.text.SimpleDateFormat;
 public class File {
-    //atributes
+    //attributes
     public String name;
     public long size;
     private String type; //MIME type
