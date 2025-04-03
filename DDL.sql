@@ -15,8 +15,17 @@ de seguir con las demas instrucciones.*/
 USE Gerardo
 GO
 
---Crear una base de datos y borrarla
-CREATE DATABASE prueba
+--crear una tabla
+CREATE TABLE Producto(
+	ProductoID bigint NOT NULL IDENTITY(1,1), --autonumerar de 1 en 1 desde 1
+	Codigo VARCHAR(25) NOT NULL,
+	Nombre VARCHAR(150) NOT NULL,
+	Costo DECIMAL(12,2) NOT NULL,
+	PrecioVenta DECIMAL(12,2) NOT NULL,
+	Existencias DECIMAL(12,2) NOT NULL,
+	Comentarios TEXT NULL,
+	PRIMARY KEY(ProductoID) --definir que columna va a ser su llave primaria
+)
 GO
-DROP DATABASE prueba
-GO
+/*NOT NULL = campo obligatorio de llenar
+NULL = campo opcional de llenar*/
