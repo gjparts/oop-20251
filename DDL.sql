@@ -29,3 +29,32 @@ CREATE TABLE Producto(
 GO
 /*NOT NULL = campo obligatorio de llenar
 NULL = campo opcional de llenar*/
+
+--borrar una tabla (peligroso)
+DROP TABLE Producto
+GO
+
+--vaciar una tabla sin eliminarla (borrar solo los registros)
+TRUNCATE TABLE Producto
+GO
+--tambien reinicia el campo IDENTITY
+
+--Agregar una columna a una tabla que ya tiene datos
+ALTER TABLE Producto
+ADD Color VARCHAR(20) NULL
+GO
+
+--Borrar una columna de la tabla
+ALTER TABLE Producto
+DROP COLUMN Color
+GO
+
+--Cambiar el tamaño de una columna
+ALTER TABLE Producto
+ALTER COLUMN Nombre VARCHAR(200) NOT NULL
+GO
+--lo anterior cambiar el tamaño de Nombre a 200 en VARCHAR
+
+
+
+
