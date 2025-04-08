@@ -58,9 +58,91 @@ SELECT TOP(3) ProductoID,Codigo,Nombre,Costo,PrecioVenta,Existencias,Comentarios
 --mostrar algunas columnas
 SELECT Codigo, Nombre, PrecioVenta FROM Producto
 SELECT Nombre, Codigo, Comentarios, Costo FROM Producto
+
 --tambien puede colocar apodos o alias a las columnas
 SELECT ProductoID as Identidad, Codigo, Nombre as [Nombre del Producto],
 		PrecioVenta as [Precio de Venta], Comentarios as Observaciones
 FROM Producto
 --si va a usar alias de varias palabras use brackets []
 --si solo es una palabra su uso es opcional
+
+--Campos calculados en tiempo real
+SELECT Codigo, Nombre, Costo, PrecioVenta, PrecioVenta-Costo as Utilidad,
+	   PrecioVenta*0.15 as [I.S.V.], POWER(PrecioVenta,2) as [Precio de Venta al Cuadrado],
+	   SQRT(Costo) as [Raiz Cuadrada del Costo],
+	   (PrecioVenta-Costo)/Costo*100 as [Desviacion Estandar de la Utilidad vs Costo]
+FROM Producto
+
+--todos los productos ordenados por precio de venta de menor a mayor
+SELECT Codigo, Nombre, PrecioVenta
+FROM Producto
+ORDER BY PrecioVenta ASC
+
+--todos los productos ordenados por precio de venta de mayor a menor
+SELECT Codigo, Nombre, PrecioVenta
+FROM Producto
+ORDER BY PrecioVenta DESC
+
+--mostrar los productos ordenados alfabeticamente por nombre de menor a mayor
+SELECT Codigo, Nombre, PrecioVenta
+FROM Producto
+ORDER BY Nombre ASC
+
+--ordenar usando como criterio mas de un campo.
+--mostrar los productos ordenados por precio de venta de mayor a menor y luego
+--por nombre de menor a mayor
+SELECT Codigo, Nombre, PrecioVenta
+FROM Producto
+ORDER BY PrecioVenta DESC, Nombre ASC
+
+--se puede hacer ordenamiento a traves del resultado de campos calculados:
+--ordenar los productos desde el que da mas ganancias hasta el que da menos ganancias
+--y luego un segundo ordenamiento por nombre de forma ascendente
+SELECT Codigo, Nombre, PrecioVenta-Costo as Utilidad
+FROM Producto
+ORDER BY PrecioVenta-Costo DESC, Nombre ASC
+--observe que para el campo calculado no se incluye el alias en el ORDER BY
+
+--Funciones de agregado
+--cantidad de registros en la tabla producto
+SELECT COUNT(ProductoID) FROM Producto
+--mostrar la suma de todos los precios de venta de la tabla producto
+SELECT SUM(PrecioVenta) FROM Producto
+--se recomienda ponerle alias a las columnas resultantes:
+SELECT COUNT(ProductoID) as Registros FROM Producto
+SELECT SUM(PrecioVenta) as [Suma de precio de venta] FROM Producto
+--mostrar la ganancia total de los productos
+SELECT SUM(PrecioVenta-Costo) as [Ganancia Total] FROM Producto
+--o sea que puede usar campos calculados en funciones de agregado
+--mostrar el costo promedio de todos los producto:
+SELECT AVG(Costo) as Promedio FROM Producto
+--mostrar el producto cuyo costo sea el mayor
+SELECT MAX(Costo) FROM Producto
+--mostrar el producto cuyo costo sea el menor
+SELECT MIN(Costo) FROM Producto
+
+--mostrar todas las columnas del producto mas caro de vender
+SELECT TOP(1) ProductoID,Codigo,Nombre,Costo,PrecioVenta,Existencias,Comentarios
+FROM Producto
+ORDER BY PrecioVenta DESC
+
+--mostrar todas las columnas del producto mas barato de vender
+SELECT TOP(1) ProductoID,Codigo,Nombre,Costo,PrecioVenta,Existencias,Comentarios
+FROM Producto
+ORDER BY PrecioVenta ASC
+
+--reemplazar valores NULL a la hora de mostrar
+SELECT Codigo, Nombre, ISNULL(Comentarios,'No tiene comentarios') as Comentarios
+FROM Producto
+
+--Uso del WHERE: sirve para filtrar los registros en una consulta
+--mostrar aquellos productos con costo mayor o igual que 30
+SELECT ProductoID,Codigo,Nombre,Costo,PrecioVenta,Existencias,Comentarios
+FROM Producto
+WHERE Costo >= 30
+--mostrar aquellos productos con costo mayor o igual que 30 ordenados
+--alfabeticamente por nombre
+SELECT ProductoID,Codigo,Nombre,Costo,PrecioVenta,Existencias,Comentarios
+FROM Producto
+WHERE Costo >= 30
+ORDER BY Nombre ASC
