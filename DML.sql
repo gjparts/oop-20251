@@ -252,3 +252,79 @@ SELECT ProductoID,Codigo,Nombre,Costo,PrecioVenta,Existencias,Comentarios
 FROM Producto
 WHERE Codigo LIKE 'PR0%'
 
+/*Instruccion DELETE
+Elimina uno o varios registros de una tabla dependiendo de lo
+devuelto por el modificar WHERE.
+-> Esta instruccion no modifica al campo IDENTITY.
+-> Para la instruccion DELETE es recomendado que antes haga un SELECT
+para tener una vista previa de lo que va a borrar.*/
+--borrar todos los registros de una tabla
+DELETE FROM Producto
+--Eliminar todos los productos cuyo costo sea menor a 10
+--vista previa
+SELECT *
+FROM Producto
+WHERE Costo < 10
+--eliminar los registros
+DELETE FROM Producto
+WHERE Costo < 10
+--eliminar un producto de acuerdo a su ProductoID
+SELECT * FROM Producto WHERE ProductoID = 11
+DELETE FROM Producto WHERE ProductoID = 11
+--eliminar productos cuyo comentario diga que es malo para la salud
+SELECT *
+FROM Producto
+WHERE Comentarios LIKE '%mal%' AND Comentarios LIKE '%salud%'
+
+DELETE
+FROM Producto
+WHERE Comentarios LIKE '%mal%' AND Comentarios LIKE '%salud%'
+
+/*Instruccion TRUNCATE: borra todos los registros de la tabla y en el caso
+de SQL Server de Microsoft tambien reinicia el campo IDENTITY.*/
+TRUNCATE TABLE Producto
+
+/*Instruccion UPDATE: Modifica uno o varios registros de acuerdo a lo devuelto
+segun el modificador WHERE.
+-> Al igual que DELETE se recomienda hacer una vista previa de los registros a afectar*/
+--colocar en CERO todas las existencias de todos los productos
+SELECT* FROM Producto
+UPDATE Producto SET Existencias = 0
+
+--colocar en 100 las existencias del producto con codigo PR33
+SELECT * FROM Producto WHERE Codigo = 'PR33'
+UPDATE Producto SET Existencias = 100 WHERE Codigo = 'PR33'
+
+--colocar en 50 las existencias de coca cola y sprite
+SELECT * FROM Producto WHERE Codigo IN ('PR01','PR02')
+UPDATE Producto SET Existencias = 50 WHERE Codigo IN ('PR01','PR02')
+
+--se puede afectar a mas de un campo
+--colocar en 200 las existencias para los productos PR52 y PR60, ademas de ponerles
+--como comentario la frase: REVISADO.
+SELECT * FROM Producto WHERE Codigo IN ('PR52','PR60')
+
+UPDATE Producto
+SET Existencias = 200, Comentarios = 'REVISADO'
+WHERE Codigo IN ('PR52','PR60')
+
+--UPDATE permite realizar calculos en base a informacion existente
+--aumentar los precios de venta de todos los productos en un 10%
+SELECT * FROM Producto 
+UPDATE Producto SET PrecioVenta = PrecioVenta*1.10
+
+--se puede hacer vista previa de como quedaria un calculo antes de aplicarlo?
+--aumentar los costos de todos los productos en un 5%
+SELECT Costo*1.05 as [Nuevo Costo], * FROM Producto
+UPDATE Producto SET Costo = Costo*1.05
+
+--se puede concatenar texto en campos que ta lo tienen
+--agregar al comentario de los productos PR01 y PR33 la palabra VERIFICADO
+--sin borrar el comentario que ya estaba
+SELECT CONCAT(Comentarios,' VERIFICADO') ,* FROM Producto WHERE Codigo IN ('PR01','PR33')
+
+UPDATE Producto
+SET Comentarios = CONCAT(Comentarios,' VERIFICADO')
+WHERE Codigo IN ('PR01','PR33')
+
+SELECT * FROM Producto
